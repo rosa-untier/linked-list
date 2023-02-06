@@ -1,0 +1,16 @@
+stages:
+  - test
+  - publish
+  
+image: jetpackio/devbox:latest
+
+vin:
+  stage: test
+  script: echo $JSR_TOKEN
+deno:test:
+  stage: test
+  script: devbox run test
+
+deno:publish:
+  stage: publish
+  script: devbox run publish --token "${JSR_TOKEN}"
