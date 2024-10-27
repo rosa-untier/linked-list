@@ -1,0 +1,26 @@
+[[language]]
+name = "typescript"
+auto-format = true
+file-types = ["ts"]
+injection-regex = "^(ts|typescript)"
+roots = ["deno.json", "deno.jsonc"]
+shebangs = ["deno"]
+language-id = "typescript"
+language-servers = ["deno-lsp"]
+
+[language-server.deno-lsp]
+command = "deno"
+args = ["lsp"]
+
+[language-server.deno-lsp.config.deno]
+enable = true
+lint = true
+unstable = true
+
+[language-server.deno-lsp.config.deno.inlayHints]
+functionLikeReturnTypes = { enabled = true }
+
+[language-server.deno-lsp.config.deno.suggest.imports.hosts]
+"https://crux.land" = true
+"https://deno.land" = true
+"https://jsr.io" = true
